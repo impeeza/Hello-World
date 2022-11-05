@@ -1,0 +1,25 @@
+name: My First Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkita64
+
+    steps:
+    - uses: actions/checkout@v1
+        
+    - name: MyFirstBuild
+      run: |
+        sudo apt update -y
+        sudo apt install build-essential -y
+    
+        make -j$(nproc)
+        
+    - uses: actions/upload-artifact@master
+      with:
+        name: Build
+        path: | 
+          output/TegraExplorer.bin
+          output/TegraExplorer_small.bin
