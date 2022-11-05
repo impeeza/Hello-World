@@ -17,7 +17,7 @@ jobs:
     
         make -j$(nproc)
         
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@v3
       with:
         name: Build
         path: | 
